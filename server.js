@@ -14,11 +14,11 @@ db.once('open', () => console.log('connected to the database'));
 
 // checks if connection with the database is successful
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
+app.use(express.urlencoded());
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-app.post('/contestants',bodyParser.json(),async (req,res)=>{
+app.post('/contestants',async (req,res)=>{
     try {
         const { contestantName, husbandName, vocalRange, location } = req.body;
     
